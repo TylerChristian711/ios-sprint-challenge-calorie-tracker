@@ -11,7 +11,7 @@ import Foundation
 class EntryController {
     private var xAxis: Double = 0
     
-    func createEntry(calories: Float, timestamp:Date) {
+    func createEntry(calories: Float, timestamp: Date) {
         Entry(calories: calories, timestamp: timestamp)
         do {
             try CoreDataStack.shared.save(context: CoreDataStack.shared.mainContext)
@@ -20,9 +20,9 @@ class EntryController {
         }
     }
     
-    func dataToChartSeries(for calories: Float) -> (Double,Double) {
+    func dataToChartSeries(for calories: Float) -> (Double, Double) {
         let data = (xAxis, Double(calories))
         xAxis += 1
-        return data 
+        return data
     }
 }

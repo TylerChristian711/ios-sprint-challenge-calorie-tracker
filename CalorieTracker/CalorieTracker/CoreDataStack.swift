@@ -12,8 +12,8 @@ class CoreDataStack {
     static let shared = CoreDataStack()
     
     lazy var container: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CalorieTracker")
-        container.loadPersistentStores { (_, error) in
+        let container = NSPersistentContainer(name: "Model")
+        container.loadPersistentStores { _, error in
             if let error = error {
                 fatalError("failed to load presistents store :\(error)")
             }
@@ -23,7 +23,7 @@ class CoreDataStack {
     }()
     
     var mainContext: NSManagedObjectContext {
-        return container.viewContext
+        container.viewContext
     }
     
     func save(context: NSManagedObjectContext) throws {
@@ -33,7 +33,7 @@ class CoreDataStack {
         context.performAndWait {
             do {
                 try context.save()
-            } catch let saveError {
+            } catch let saveError as NSError {
                 error = saveError
             }
         }

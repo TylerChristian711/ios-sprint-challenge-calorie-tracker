@@ -20,8 +20,8 @@ class CalorieTrackerTableViewController: UITableViewController {
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM,d,yyyy h:mm a"
-        formatter.timeZone = TimeZone.autoupdatingCurrent
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
         return formatter
     }
 
@@ -31,7 +31,7 @@ class CalorieTrackerTableViewController: UITableViewController {
         let moc = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
         
-        frc.delegate = self as? NSFetchedResultsControllerDelegate
+        frc.delegate = self
         do {
             try frc.performFetch()
         } catch {
@@ -40,14 +40,11 @@ class CalorieTrackerTableViewController: UITableViewController {
         return frc
     }()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: .calorieEntryAdded, object: nil)
+        updateViews()
     }
-    
-    
     
     @objc func updateViews() {
         tableView.reloadData()
@@ -71,6 +68,9 @@ class CalorieTrackerTableViewController: UITableViewController {
         loadedChartOnce = true
     }
     
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        presentCalorieEntryAlert()
+    }
     
     private func presentCalorieEntryAlert() {
         let alert = UIAlertController(title: "Add Calorie Intake",
@@ -78,10 +78,10 @@ class CalorieTrackerTableViewController: UITableViewController {
                                       preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addTextField { (textField) in
+        alert.addTextField { textField in
             textField.placeholder = "Calories"
         }
-        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { _ in
             if let caloriesString = alert.textFields?.first?.text,
                 !caloriesString.isEmpty,
                 let calories = Float(caloriesString) {
@@ -89,6 +89,7 @@ class CalorieTrackerTableViewController: UITableViewController {
                 let data = self.entryController.dataToChartSeries(for: calories)
                 self.chartSeries.data.append(data)
                 NotificationCenter.default.post(name: .calorieEntryAdded, object: self)
+                self.dismiss(animated: true)
             }
         }))
         
@@ -97,29 +98,18 @@ class CalorieTrackerTableViewController: UITableViewController {
         
     }
     
-    
-    
-    
-
     // MARK: - Table view data source
-
-
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultController.sections?[section].numberOfObjects ?? 0
+        fetchedResultController.sections?[section].numberOfObjects ?? 0
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath)
         
-        let calorieString = "Calories: \(fetchedResultController.object(at: indexPath).timestamp ?? Date())"
-        cell.textLabel?.text = calorieString
+        cell.textLabel?.text = "Calories: \(fetchedResultController.object(at: indexPath).calories)"
         
         let dateString = dateFormatter.string(from: fetchedResultController.object(at: indexPath).timestamp ?? Date())
         cell.detailTextLabel?.text = dateString
-
-        
 
         return cell
     }
@@ -136,7 +126,10 @@ extension CalorieTrackerTableViewController: NSFetchedResultsControllerDelegate 
         tableView.endUpdates()
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                    atSectionIndex sectionIndex: Int,
+                    for type: NSFetchedResultsChangeType) {
         switch type {
         case .insert:
             tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
@@ -147,7 +140,11 @@ extension CalorieTrackerTableViewController: NSFetchedResultsControllerDelegate 
         }
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             guard let newIndexPath = newIndexPath else { return }
@@ -163,9 +160,7 @@ extension CalorieTrackerTableViewController: NSFetchedResultsControllerDelegate 
             guard let indexPath = indexPath else { return }
             tableView.deleteRows(at: [indexPath], with: .automatic)
         default:
-            break 
+            break
         }
     }
-    
-    
 }
