@@ -10,13 +10,16 @@
 		92CC32482E0FD54CE4396A01 /* Pods_CalorieTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113262323561C3D25F61C77F /* Pods_CalorieTracker.framework */; };
 		E3D5B6A923E48D3500E9E774 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5B6A823E48D3500E9E774 /* AppDelegate.swift */; };
 		E3D5B6AB23E48D3500E9E774 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5B6AA23E48D3500E9E774 /* SceneDelegate.swift */; };
-		E3D5B6AD23E48D3500E9E774 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5B6AC23E48D3500E9E774 /* ViewController.swift */; };
 		E3D5B6B023E48D3600E9E774 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3D5B6AE23E48D3600E9E774 /* Main.storyboard */; };
 		E3D5B6B223E48D3900E9E774 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D5B6B123E48D3900E9E774 /* Assets.xcassets */; };
 		E3D5B6B523E48D3900E9E774 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3D5B6B323E48D3900E9E774 /* LaunchScreen.storyboard */; };
 		E3D5B6BF23E4B0A400E9E774 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3D5B6BD23E4B0A400E9E774 /* Model.xcdatamodeld */; };
 		E3D5B6C123E4B0E300E9E774 /* EntryRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5B6C023E4B0E300E9E774 /* EntryRepresentation.swift */; };
 		E3D5B6C323E4B12E00E9E774 /* Entry+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5B6C223E4B12E00E9E774 /* Entry+Convenience.swift */; };
+		E3D5B6C523E4BB5C00E9E774 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5B6C423E4BB5C00E9E774 /* CoreDataStack.swift */; };
+		E3D5B6C723E4C40A00E9E774 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5B6C623E4C40A00E9E774 /* EntryController.swift */; };
+		E3D5B6C923E4C66600E9E774 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5B6C823E4C66600E9E774 /* Notifications.swift */; };
+		E3D5B6CD23E4C99600E9E774 /* CalorieTrackerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5B6CC23E4C99600E9E774 /* CalorieTrackerTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +29,6 @@
 		E3D5B6A523E48D3500E9E774 /* CalorieTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalorieTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D5B6A823E48D3500E9E774 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3D5B6AA23E48D3500E9E774 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E3D5B6AC23E48D3500E9E774 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E3D5B6AF23E48D3600E9E774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3D5B6B123E48D3900E9E774 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3D5B6B423E48D3900E9E774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -34,6 +36,10 @@
 		E3D5B6BE23E4B0A400E9E774 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E3D5B6C023E4B0E300E9E774 /* EntryRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRepresentation.swift; sourceTree = "<group>"; };
 		E3D5B6C223E4B12E00E9E774 /* Entry+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+Convenience.swift"; sourceTree = "<group>"; };
+		E3D5B6C423E4BB5C00E9E774 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		E3D5B6C623E4C40A00E9E774 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
+		E3D5B6C823E4C66600E9E774 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		E3D5B6CC23E4C99600E9E774 /* CalorieTrackerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieTrackerTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,14 +86,17 @@
 			children = (
 				E3D5B6A823E48D3500E9E774 /* AppDelegate.swift */,
 				E3D5B6AA23E48D3500E9E774 /* SceneDelegate.swift */,
-				E3D5B6AC23E48D3500E9E774 /* ViewController.swift */,
 				E3D5B6AE23E48D3600E9E774 /* Main.storyboard */,
+				E3D5B6CC23E4C99600E9E774 /* CalorieTrackerTableViewController.swift */,
 				E3D5B6B123E48D3900E9E774 /* Assets.xcassets */,
 				E3D5B6B323E48D3900E9E774 /* LaunchScreen.storyboard */,
 				E3D5B6B623E48D3900E9E774 /* Info.plist */,
 				E3D5B6BD23E4B0A400E9E774 /* Model.xcdatamodeld */,
 				E3D5B6C023E4B0E300E9E774 /* EntryRepresentation.swift */,
 				E3D5B6C223E4B12E00E9E774 /* Entry+Convenience.swift */,
+				E3D5B6C423E4BB5C00E9E774 /* CoreDataStack.swift */,
+				E3D5B6C623E4C40A00E9E774 /* EntryController.swift */,
+				E3D5B6C823E4C66600E9E774 /* Notifications.swift */,
 			);
 			path = CalorieTracker;
 			sourceTree = "<group>";
@@ -233,11 +242,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3D5B6AD23E48D3500E9E774 /* ViewController.swift in Sources */,
+				E3D5B6C523E4BB5C00E9E774 /* CoreDataStack.swift in Sources */,
 				E3D5B6C123E4B0E300E9E774 /* EntryRepresentation.swift in Sources */,
+				E3D5B6C923E4C66600E9E774 /* Notifications.swift in Sources */,
 				E3D5B6A923E48D3500E9E774 /* AppDelegate.swift in Sources */,
 				E3D5B6AB23E48D3500E9E774 /* SceneDelegate.swift in Sources */,
 				E3D5B6C323E4B12E00E9E774 /* Entry+Convenience.swift in Sources */,
+				E3D5B6CD23E4C99600E9E774 /* CalorieTrackerTableViewController.swift in Sources */,
+				E3D5B6C723E4C40A00E9E774 /* EntryController.swift in Sources */,
 				E3D5B6BF23E4B0A400E9E774 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
